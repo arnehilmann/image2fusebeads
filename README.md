@@ -3,6 +3,8 @@ image2fusebeads
 
 Convert your image to a fuse beads pattern
 
+<img alt="original image" src="https://raw.github.com/arnehilmann/image2fusebeads/master/examples/donald.jpg" height=200/> -> <img alt="fuse beads pattern" src="http://arnehilmann.github.com/image2fusebeads/out/donald.jpg-6.JPG" height=200/>
+
 ![original image](https://raw.github.com/arnehilmann/image2fusebeads/master/examples/donald.jpg) -> ![fuse beads pattern](http://arnehilmann.github.com/image2fusebeads/out/donald.jpg-6.JPG)
 
 Requirements
