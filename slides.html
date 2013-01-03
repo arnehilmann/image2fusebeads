@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="res/jquery.min.js"></script>
+        <style>svg {float: left; width: 0px; height: 0px; padding: 10px;}</style>
+    </head>
+    <body>
+        <svg><image id="0" xlink:href=""/></svg>
+        <svg><image id="1" xlink:href=""/></svg>
+        <svg><image id="2" xlink:href=""/></svg>
+        <svg><image id="3" xlink:href=""/></svg>
+        <svg><image id="4" xlink:href=""/></svg>
+        <svg><image id="5" xlink:href=""/></svg>
+        <svg><image id="6" xlink:href=""/></svg>
+        <svg><image id="7" xlink:href=""/></svg>
+        <script type="text/javascript">
+            var size = 300;
+
+            function getUrlVars() {
+                var vars = {};
+                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                    vars[key] = value;
+                });
+                return vars;
+            };
+            function create_line(x1, y1, x2, y2, style) {
+                var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', x1);
+                line.setAttribute('y1', y1);
+                line.setAttribute('x2', x2);
+                line.setAttribute('y2', y2);
+                line.setAttribute('style', style);
+                return line;
+            };
+            function render_grid(element, w, h, stepMinor, stepMajor) {
+                for (var i=stepMinor; i < w; i+=stepMinor) {
+                    element.append(create_line(i, 0, i, h, 'stroke:grey'));
+                }
+                for (var i=stepMinor; i < h; i+=stepMinor) {
+                    element.append(create_line(0, i, w, i, 'stroke:grey'));
+                }
+                for (var i=stepMajor; i < w; i+=stepMajor) {
+                    element.append(create_line(i, 0, i, h, 'stroke:black'));
+                }
+                for (var i=stepMajor; i < h; i+=stepMajor) {
+                    element.append(create_line(0, i, w, i, 'stroke:black'));
+                }
+            };
+
+            $(document).ready(function(){
+                var filenames = getUrlVars()["files"].split(',');
+                for (var index in filenames) {
+                    var filename = filenames[index];
+                    var id = '#' + index;
+                    $(id).attr('xlink:href', filename);
+                    $(id).attr('href', filename);
+                    $(id).attr('width', size);
+                    $(id).attr('height', size);
+                    $(id).parent().css('width', size);
+                    $(id).parent().css('height', size);
+                    render_grid($(id).parent(), size, size, 10, 50);
+                }
+            });
+        </script>
+    </body>
+</html>
+

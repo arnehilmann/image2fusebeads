@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>pearl photo | lightroom</title>
+        <script src="res/jquery.min.js"></script>
+        <script src="res/jquery-ui-1.8.17.custom.min.js"></script>
+        <link rel="stylesheet" href="res/ui-lightness/jquery-ui-1.8.17.custom.css"/>
+        <style>
+            body {
+                background: #fff;
+                color: #444;
+                font: 100%/1.33333 Verdana,"DejaVu Sans",Arial,Helvetica,sans-serif;
+                margin: 1cm 1cm 2cm;
+                padding: 0;
+            }
+            h1, h2, h3, h4, h5, h6 { font: 1em Tahoma,Geneva,Kalimati,sans-serif; margin: 0 0 .5em; }
+            h1 {
+                font-weight: bold;
+                font-size: 1.8em;
+                text-shadow: 0 1px 3px #fff;
+            }
+
+            .control { overflow: auto; }
+            .control * { float: left; }
+            #amount { border: 0; color: #f6931f; fontweight: bold; }
+            #slider { width: 200px; }
+
+            img.selected { border: 4px solid #f6931f; }
+            img.hilite { border: 4px solid #bbb; }
+            img.fade { opacity: 0.4; }
+            img { border: 4px solid white; }
+        </style>
+    </head>
+    <body>
+        <h1>pearl photo | lightroom</h1>
+
+        <div class="control">
+            <input size="3" type="text" id="amount" />
+            <div id="slider"></div>
+            <button id="preview">show print view</button>
+        </div>
+
+        <div id="imgmatrix"/>
+
+
+        <script>
+            $(function() {
+                $( "#slider" ).slider({
+                    //orientation: 'vertical',
+                    range: "min",
+                    min: 30,
+                    max: 150,
+                    value: 80,
+                    step: 10,
+                    slide: function( event, ui ) {
+                        $( "#amount" ).val( ui.value );
+                        $('#imgmatrix img').attr('width', ui.value);
+                    }
+                });
+                $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                    $('#imgmatrix').load('out/index.inc', function(){
+                        $('#imgmatrix img').attr('width', $("#amount").val());
+                        $('#imgmatrix img').click(function(){
+                            if ($(this).hasClass('selected')) {
+                                $(this).addClass("hilite");
+                                $(this).removeClass("selected");
+                            } else {
+                                $(this).addClass("selected");
+                                $(this).removeClass("hilite");
+                            }
+                        });
+                        $('#imgmatrix img').hover(function(){
+                            if (! $(this).hasClass('selected')) {
+                                $(this).addClass("hilite");
+                            }
+                        }, function(){
+                            $(this).removeClass("hilite");
+                        });
+
+                    });
+                    $('#preview').hover(
+                        function(){
+                            $('img').map(function(index, element){
+                                if (!$(this).hasClass('selected')){
+                                    $(this).addClass('fade');
+                                }
+                            });
+                            var files = '';
+                            $('img.selected').map(function(index, element){
+                                if (files.length > 0) {
+                                    files += ',';
+                                }
+                                files += $(this).attr('src');
+                            });
+                            console.log(files);
+                            $(this).attr('files', files);
+                        }, function(){
+                            $('img').map(function(index, element){
+                                if ($(this).hasClass('fade')){
+                                    $(this).removeClass('fade');
+                                }
+                            });
+                        }
+                    );
+                    $('#preview').click(function(){
+                        window.open('slides.html?files=' + $('#preview').attr('files'));
+                    });
+            });
+        </script>
+    </body>
+</html>
+
