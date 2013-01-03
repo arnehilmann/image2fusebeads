@@ -28,6 +28,6 @@ echo "</table>"
 exec 1>&3
 
 echo "
-Point your web browser to the pearl photo lightroom url:
+Point your web browser to the image2fusebeads lightroom:
 file://$(pwd)/index.html
 "

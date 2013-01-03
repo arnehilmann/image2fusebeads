@@ -1,6 +1,7 @@
 #!/bin/bash
 set -u -e -E -C -o pipefail
 
+# TODO should be an option
 NR_X=30
 NR_Y=$NR_X
 COLORS=$(seq 2 6)
@@ -9,12 +10,16 @@ OUTDIR=out
 mkdir -p $OUTDIR
 
 shopt -s nullglob
-FILES=${@:-$(eval *.JPG)}
+FILES=${@:-examples/*.jpg}
 
 if [[ -z $FILES ]]; then
     echo "no files given"
     exit 1
 fi 
+
+echo 
+echo Generating ${NR_X}x${NR_Y} fusebeads patterns, reduced to $COLORS colors.
+echo
 
 for thisFILE in $FILES; do
     thisBASEFILE=$(basename $thisFILE .JPG)
@@ -40,4 +45,4 @@ for thisFILE in $FILES; do
     wait
     echo
 done
-util/indexing.sh
+$(dirname $0)/indexing.sh
