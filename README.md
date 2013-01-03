@@ -2,7 +2,8 @@ image2fusebeads
 ===============
 
 Convert your image to a fuse beads pattern
-
+![original image](https://github.com/arnehilmann/image2fusebeads/blob/master/examples/donald.jpg) -> 
+![fuse beads pattern](http://arnehilmann.github.com/image2fusebeads/out/donald.jpg-6.JPG)
 
 Requirements
 ------------
