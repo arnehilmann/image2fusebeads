@@ -33,5 +33,6 @@ Without any arguments, the example files get processed:
 ```bash
 bin/image2fusebeads 
 ```
-resulting in this [lightroom](http://arnehilmann.github.com/image2fusebeads/).
+resulting in the [lightroom](http://arnehilmann.github.com/image2fusebeads/)
+and the [print view](http://arnehilmann.github.com/image2fusebeads/slides.html?files=out/donald.jpg-6.JPG,out/marilyn.jpg-4.JPG).
 
