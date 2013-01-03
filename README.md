@@ -3,7 +3,7 @@ image2fusebeads
 
 Convert your image to a fuse beads pattern
 
-<img alt="original image" src="https://raw.github.com/arnehilmann/image2fusebeads/master/examples/donald.jpg" height=150/>  <img alt="fuse beads pattern" src="http://arnehilmann.github.com/image2fusebeads/out/donald.jpg-6.JPG" height=150/>
+<img alt="original image" src="https://raw.github.com/arnehilmann/image2fusebeads/master/examples/donald.jpg" height=150/> &gt; <img alt="fuse beads pattern" src="http://arnehilmann.github.com/image2fusebeads/out/donald.jpg-6.JPG" height=150/>
 
 Requirements
 ------------
@@ -35,5 +35,5 @@ Without any arguments, the example files get processed:
 bin/image2fusebeads 
 ```
 resulting in the [lightroom](http://arnehilmann.github.com/image2fusebeads/)
-and the [print view](http://arnehilmann.github.com/image2fusebeads/slides.html?files=out/donald.jpg-6.JPG,out/marilyn.jpg-4.JPG).
+and for example such a [print view](http://arnehilmann.github.com/image2fusebeads/slides.html?files=out/donald.jpg-6.JPG,out/marilyn.jpg-4.JPG).
 
